@@ -2,10 +2,16 @@
 
 namespace App\View\Components\Home;
 
+use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 
 class Portfolio extends Component
 {
+
+    public array $items = [];
+
+    public array $tabs = [];
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +19,27 @@ class Portfolio extends Component
      */
     public function __construct()
     {
-        //
+        $this->items = [
+            [
+                'category' => ['Laravel', 'Tailwind.css', 'Vue3'],
+                'title' => 'Full Stack app with Laravel, Tailwindcss and Vue 3',
+                'image' => url('/img/survey.png'),
+                'github' => 'https://github.com/thecodeholic/laravel-vue-survey'
+            ],
+            [
+                'category' => ['WordPress', 'Bootsrap 5', 'JS'],
+                'title' => 'Full Stack app with Laravel, Tailwindcss and Vue 3',
+                'image' => url('/img/survey.png'),
+                'github' => 'https://github.com/thecodeholic/laravel-vue-survey'
+            ],
+            [
+                'category' => ['WordPress', 'Bootsrap 5', 'JS'],
+                'title' => 'Full Stack app with Laravel, Tailwindcss and Vue 3',
+                'image' => url('/img/survey.png'),
+                'github' => 'https://github.com/thecodeholic/laravel-vue-survey'
+            ],
+        ];
+        $this->tabs = array_unique(Arr::flatten(Arr::pluck($this->items, 'category')));
     }
 
     /**
